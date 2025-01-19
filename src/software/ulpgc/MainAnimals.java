@@ -131,17 +131,17 @@ public class MainAnimals {
                 .max(Comparator.comparingInt(Animal::legs))
                 .orElse(null);
         System.out.println(moreLegs);
-        long countLegs = animals.stream()
+        Integer countLegs = animals.stream()
                 .mapToInt(Animal::legs)
                 .sum();
         System.out.println(countLegs);
-        Map<Integer, List<Animal>> groupedByLegs = animals.stream()
+        Map<Integer, List<Animal>> animalsPerLegs = animals.stream()
                 .collect(Collectors.groupingBy(Animal::legs));
-        System.out.println(groupedByLegs);
+        System.out.println(animalsPerLegs);
         Map<String, Long> animalsPerSpecies = animals.stream()
                 .collect(Collectors.groupingBy(Animal::species, Collectors.counting()));
         System.out.println(animalsPerSpecies);
-        long numberOfSpecies = animals.stream()
+        Long numberOfSpecies = animals.stream()
                 .map(Animal::species)
                 .distinct()
                 .count();
